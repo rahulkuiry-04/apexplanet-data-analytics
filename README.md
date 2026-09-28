@@ -1,31 +1,34 @@
-"# apexplanet-data-analytics" 
 # Apexplanet Data Analytics: Task 1
 
-**Foundational Setup & Exploratory Data Analysis (EDA)**
+**Foundational Setup & Exploratory Data Analysis (EDA) on Telco Customer Churn**
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue)
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange)
-![Status](https://img.shields.io/badge/Status-In%20Progress-yellow)
+![Status](https://img.shields.io/badge/Status-Task%201%20Complete-brightgreen)
 
 ## 📌 Project Overview
 
-This project is Task 1 of the Apexplanet Data Analytics program. It covers setting up a reproducible analytics environment, sourcing and cleaning a real-world dataset, and performing exploratory data analysis (EDA) to uncover patterns, trends, and anomalies.
+This project is Task 1 of the Apexplanet Data Analytics program. It covers setting up a reproducible analytics environment, sourcing and cleaning a real-world dataset, and performing exploratory data analysis (EDA) to uncover patterns, trends and anomalies.
 
-**Dataset analyzed:** [Dataset name, e.g. IBM Telco Customer Churn]
-**Objective:** [One sentence, e.g. Identify the key factors associated with customer churn.]
+**Dataset analyzed:** IBM Telco Customer Churn (7,043 customers, 21 columns)
+**Objective:** Identify the key factors associated with customer churn.
+**Headline result:** 26.5% of customers churned, and contract type, tenure and internet service type were the strongest patterns.
 
 ## 📁 Folder Structure
 
 ```
 apexplanet-data-analytics/
 ├── data/
-│   ├── raw/            # Original, unmodified datasets
-│   └── processed/      # Cleaned data ready for analysis
-├── notebooks/          # Jupyter notebooks (EDA and documentation)
-├── scripts/            # Reusable Python scripts
-├── reports/            # PDF/PPT summaries
-├── dashboards/         # Power BI / Tableau files (PBIX/TWBX)
-├── environment.yml     # Conda environment specification
+│   ├── raw/                # Original, unmodified dataset (Telco-Customer-Churn.csv)
+│   └── processed/          # Cleaned data (telco_churn_clean.csv)
+├── notebooks/
+│   └── 01_data_sourcing_and_cleaning.ipynb   # Sourcing, cleaning and full EDA
+├── scripts/                # Reusable Python scripts
+├── reports/
+│   ├── cleaning_log.csv    # Log of every cleaning transformation
+│   └── figures/            # Saved EDA charts
+├── dashboards/             # Power BI / Tableau files (PBIX/TWBX)
+├── environment.yml         # Conda environment specification
 └── README.md
 ```
 
@@ -58,69 +61,101 @@ jupyter notebook
 
 | Item | Details |
 |------|---------|
-| **Dataset** | [Name] |
-| **Source** | [Kaggle / Our World in Data / IBM / Tableau / Company] ([link]) |
-| **Rows × Columns** | [e.g. 7,043 × 21] |
-| **Collection method** | [How the data was originally collected] |
-| **Time period** | [If applicable] |
+| **Dataset** | IBM Telco Customer Churn |
+| **Source** | [Kaggle: Telco Customer Churn (IBM dataset)](https://www.kaggle.com/datasets/yeanzc/telco-customer-churn-ibm-dataset) |
+| **File** | `data/raw/Telco-Customer-Churn.csv` |
+| **Rows × Columns** | 7,043 × 21 |
+| **Collection method** | Sample dataset published by IBM to demonstrate analytics tools; each row is one telecom customer |
+| **Time period** | Single snapshot (no time dimension) |
 
-**Known limitations:** [e.g. Snapshot data with no time dimension; possible sampling bias; some fields self-reported.]
+**Known limitations:** The data is a fictional sample, so findings may not generalise to a real telecom company. It is a single snapshot with no dates, so trends over time can't be studied. It also has no location or customer-service history.
 
-### Data Dictionary (key columns)
+### Data Dictionary
 
-| Column | Type | Description |
+| Column | Type (after cleaning) | Description |
 |--------|------|-------------|
-| [column_1] | [int/float/category/datetime] | [Description] |
-| [column_2] | [type] | [Description] |
+| `customer_id` | object | Unique customer identifier |
+| `gender` | category | Male / Female |
+| `senior_citizen` | category | Whether the customer is a senior citizen (Yes/No) |
+| `partner` | category | Whether the customer has a partner |
+| `dependents` | category | Whether the customer has dependents |
+| `tenure` | int | Months the customer has stayed with the company |
+| `phone_service` | category | Whether the customer has phone service |
+| `multiple_lines` | category | Yes / No / No phone service |
+| `internet_service` | category | DSL / Fiber optic / No |
+| `online_security` | category | Online security add-on (Yes / No / No internet service) |
+| `online_backup` | category | Online backup add-on |
+| `device_protection` | category | Device protection add-on |
+| `tech_support` | category | Tech support add-on |
+| `streaming_tv` | category | Streaming TV add-on |
+| `streaming_movies` | category | Streaming movies add-on |
+| `contract` | category | Month-to-month / One year / Two year |
+| `paperless_billing` | category | Whether the customer uses paperless billing |
+| `payment_method` | category | Electronic check / Mailed check / Bank transfer (automatic) / Credit card (automatic) |
+| `monthly_charges` | float | Amount charged per month |
+| `total_charges` | float | Total amount charged over the customer's tenure |
+| `churn` | category | **Target:** whether the customer left (Yes/No) |
 
 ## 🧹 Data Cleaning Summary
 
 | Step | Action | Rows/Columns Affected |
 |------|--------|-----------------------|
-| Missing values | [e.g. Filled `TotalCharges` with median] | [11 rows] |
-| Duplicates | [Removed exact duplicates] | [0] |
-| Data types | [Converted `date` to datetime] | [1 column] |
-| Outliers | [IQR method, capped at 1.5×IQR] | [n rows] |
-| Column names | [Standardized to snake_case] | [All] |
+| Missing values | `total_charges` loaded as text because of blank strings; converted to numeric and filled the blanks with the median. All 11 affected customers have `tenure = 0` (brand-new customers) | 11 rows |
+| Duplicates | Checked for exact duplicate rows; none found | 0 |
+| Data types | `senior_citizen` mapped from 0/1 to No/Yes; text columns (except `customer_id`) converted to `category` | 17 columns |
+| Outliers | IQR method (1.5×IQR) checked on `tenure`, `monthly_charges` and `total_charges`; no outliers found, so nothing was removed | 0 |
+| Column names | Standardized to snake_case (e.g. `TotalCharges` → `total_charges`) | All 21 columns |
 
-The full cleaning log is documented in `notebooks/01_eda.ipynb`.
+The full log is in [`reports/cleaning_log.csv`](reports/cleaning_log.csv), and the cleaned dataset (7,043 rows × 21 columns) is saved to `data/processed/telco_churn_clean.csv`.
 
 ## 🔍 Findings Summary
 
 ### Key Insights
 
-1. **[Insight 1]:** [e.g. Customers on month-to-month contracts churn at 3× the rate of those on two-year contracts.]
-2. **[Insight 2]:** [Description with supporting numbers.]
-3. **[Insight 3]:** [Description with supporting numbers.]
+1. **Contract type is the strongest driver of churn.** Month-to-month customers churn at **42.7%**, compared with **11.3%** on one-year contracts and **2.8%** on two-year contracts.
+2. **New customers leave first.** The median tenure of churned customers is **10 months**, versus **38 months** for retained customers. Tenure has the strongest correlation with churn of the numeric features (r = **-0.35**).
+3. **Higher bills and fiber optic service go with higher churn.** Churned customers pay **$74.4** per month on average versus **$61.3** for retained customers. Fiber optic customers churn at **41.9%**, against **19.0%** for DSL and **7.4%** for customers with no internet service.
 
 ### Patterns, Trends & Anomalies
 
-- [Pattern or trend observed]
-- [Notable correlation, e.g. tenure and total charges: r = 0.83]
-- [Anomaly or outlier worth flagging]
+- **Overall churn rate:** 26.5% (1,869 of 7,043 customers), so the target is moderately imbalanced.
+- **Customer mix:** Month-to-month is the most common contract (3,875 customers), fiber optic is the most common internet service (3,096), and electronic check is the most common payment method (2,365).
+- **Correlation with churn:** `tenure` -0.35, `total_charges` -0.20, `monthly_charges` 0.19, `senior_citizen` 0.15.
+- **Strong overlap between features:** `tenure` and `total_charges` are strongly correlated (r = **0.83**), so using both together in a predictive model could add redundancy.
+- **Data quality:** No duplicates and no IQR outliers. The only missing values were the 11 blank `total_charges` entries for customers with zero tenure.
+
+### What this suggests
+
+Retention effort is likely best aimed at **new, month-to-month customers**, especially those on **fiber optic** plans. Encouraging longer contracts looks like a promising lever. These are patterns in the data, not proven causes, and testing them would need further analysis.
 
 ### Visualizations
 
-![Correlation Heatmap](reports/figures/correlation_heatmap.png)
-![Distribution Plot](reports/figures/distribution.png)
+| | |
+|---|---|
+| ![Numeric distributions](reports/figures/hist_numeric.png) | ![Numeric boxplots](reports/figures/box_numeric.png) |
+| ![Categorical counts](reports/figures/bar_categorical.png) | ![Tenure vs monthly charges](reports/figures/scatter_tenure_monthly.png) |
+| ![Numeric features by churn](reports/figures/box_by_churn.png) | ![Correlation heatmap](reports/figures/correlation_heatmap.png) |
+
+![Churn rate by category](reports/figures/churn_rate_by_category.png)
 
 ## 🚀 How to Reproduce
 
 1. Complete the environment setup above.
-2. Place the raw dataset in `data/raw/`.
-3. Open `notebooks/01_eda.ipynb` and run all cells.
-4. Cleaned output is saved to `data/processed/`.
+2. Download the dataset from [Kaggle](https://www.kaggle.com/datasets/yeanzc/telco-customer-churn-ibm-dataset) and place `Telco-Customer-Churn.csv` in `data/raw/`.
+3. Open `notebooks/01_data_sourcing_and_cleaning.ipynb` with the **Python (analytics)** kernel and run all cells from the `notebooks/` folder.
+4. Outputs are written to `data/processed/`, `reports/cleaning_log.csv` and `reports/figures/`.
 
 ## 🛠️ Next Steps
 
-- [Task 2: e.g. SQL analysis / dashboarding]
-- [Further feature engineering or modeling ideas]
+- Explore additional relationships (add-on services, payment method and demographics vs churn).
+- Build a churn prediction model, handling the class imbalance and the `tenure` / `total_charges` overlap.
+- Create an interactive dashboard in `dashboards/` (Power BI or Tableau).
 
 ## 👤 Author
 
 **Rahul Kuiry**
 📧 rahulkuiry04@gmail.com
-🔗 [LinkedIn](https://linkedin.com/in/<your-handle>) | [GitHub](https://github.com/<your-username>)
+🔗 [LinkedIn](https://www.linkedin.com/in/rahul-kuiry-419049261/) | 🔗  [GitHub](https://github.com/rahulkuiry-04/)
 
 ---
 *Completed as part of the Apexplanet Data Analytics Internship, Task 1.*

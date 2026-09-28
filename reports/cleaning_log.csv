@@ -1,0 +1,8 @@
+step,action,affected
+Missing values,Converted TotalCharges to numeric; filled blanks with median,11
+Duplicates,Dropped exact duplicate rows,0
+Data types,SeniorCitizen 0/1 -> No/Yes; object columns -> category,18
+Outliers,IQR check on tenure: 0 outliers found; kept (valid customer values),0
+Outliers,IQR check on MonthlyCharges: 0 outliers found; kept (valid customer values),0
+Outliers,IQR check on TotalCharges: 0 outliers found; kept (valid customer values),0
+Column names,Converted to snake_case,21
