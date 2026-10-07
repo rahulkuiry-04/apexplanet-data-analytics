@@ -1,20 +1,21 @@
-# Apexplanet Data Analytics: Task 1
+# Apexplanet Data Analytics: Tasks 1–2
 
-**Foundational Setup & Exploratory Data Analysis (EDA) on Telco Customer Churn**
+**Data Cleaning, Exploratory Data Analysis (EDA), and MySQL Data Extraction**
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue)
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange)
-![Status](https://img.shields.io/badge/Status-Task%201%20Complete-brightgreen)
+![Database](https://img.shields.io/badge/Database-MySQL-blue)
+![Status](https://img.shields.io/badge/Status-Tasks%201%20%26%202%20Complete-brightgreen)
 
 ## 📌 Project Overview
 
-This project is Task 1 of the Apexplanet Data Analytics program. It covers setting up a reproducible analytics environment, sourcing and cleaning a real-world dataset, and performing exploratory data analysis (EDA) to uncover patterns, trends and anomalies.
+This project covers the first two tasks of the Apexplanet Data Analytics program: setting up a reproducible analytics environment, sourcing and cleaning a customer churn dataset, performing exploratory data analysis (EDA), and practicing SQL-based data extraction with MySQL and Python.
 
 **Dataset analyzed:** IBM Telco Customer Churn (7,043 customers, 21 columns)
 **Objective:** Identify the key factors associated with customer churn.
 **Headline result:** 26.5% of customers churned, and contract type, tenure and internet service type were the strongest patterns.
 
-Task 2's MySQL SQL and Python integration is in [`notebooks/02_mysql_database.ipynb`](notebooks/02_mysql_database.ipynb), with 20+ practice queries in [`sql/task2_queries.sql`](sql/task2_queries.sql) and reusable connection/loading helpers in [`db_utils.py`](db_utils.py). The Telco dataset is a single snapshot, so dated sales trends and product sales are not available.
+Task 2 includes 20+ MySQL practice queries in [`sql/task2_queries.sql`](sql/task2_queries.sql), covering filtering, joins, aggregates, CTEs, subqueries, window functions, retention, reusable views, and `EXPLAIN`. The [`MySQL notebook`](notebooks/02_mysql_database.ipynb) integrates SQL with Python and Pandas for database connection, CSV loading, and automated query extraction using [`db_utils.py`](db_utils.py).
 
 ## 📁 Folder Structure
 
@@ -24,17 +25,18 @@ apexplanet-data-analytics/
 │   ├── raw/                # Original, unmodified dataset (Telco-Customer-Churn.csv)
 │   └── processed/          # Cleaned data (telco_churn_clean.csv)
 ├── notebooks/
-│   └── 02_mysql_database.ipynb              # Task 2: MySQL + Python practice
-├── scripts/                                 # Task 1 sourcing and cleaning
-├── db_utils.py                              # MySQL connection and CSV helpers
+│   └── 02_mysql_database.ipynb  # Task 2: MySQL + Python practice
+├── scripts/
+│   └── 01_data_sourcing_and_cleaning.ipynb # Task 1: sourcing, cleaning and EDA
+├── db_utils.py                  # MySQL connection, CSV loading and query helpers
 ├── sql/
-│   └── task2_queries.sql                    # MySQL practice queries, view and EXPLAIN
-├── .env.example                             # MySQL settings template
+│   └── task2_queries.sql        # MySQL practice queries, view and EXPLAIN
+├── .env.example                 # MySQL settings template
+├── requirements.txt
 ├── reports/
-│   ├── cleaning_log.csv    # Log of every cleaning transformation
-│   └── figures/            # Saved EDA charts
-├── dashboards/             # Power BI / Tableau files (PBIX/TWBX)
-├── environment.yml         # Conda environment specification
+│   ├── cleaning_log.csv         # Log of every cleaning transformation
+│   └── figures/                 # Saved EDA charts
+├── dashboards/                  # Power BI / Tableau files (PBIX/TWBX)
 └── README.md
 ```
 
@@ -52,16 +54,20 @@ conda create -n analytics python=3.10 -y
 conda activate analytics
 
 # 3. Install dependencies
-conda install -y pandas numpy matplotlib seaborn plotly scikit-learn sqlalchemy pymysql jupyter ipykernel
-
-# Or recreate the exact environment:
-# conda env create -f environment.yml
+pip install -r requirements.txt
+pip install jupyter ipykernel
 
 # 4. Launch Jupyter
 jupyter notebook
 ```
 
 **Libraries used:** pandas, numpy, matplotlib, seaborn, plotly, scikit-learn, sqlalchemy, PyMySQL
+
+## ✅ Task 2: SQL & Data Extraction
+
+The MySQL practice covers `SELECT`, `WHERE`, `ORDER BY`, `LIMIT`, `INNER`/`LEFT`/`RIGHT` joins, a MySQL-compatible `FULL OUTER JOIN` emulation, `GROUP BY`, `HAVING`, aggregate functions, subqueries, CTEs, and `ROW_NUMBER`, `RANK`, `LAG`, and `LEAD` window functions. Business-focused queries explore top customers by lifetime billed charges, retention and churn rates, and internet service category performance. The script also demonstrates a reusable view and query plan inspection with `EXPLAIN`; an optional index is documented for evaluation.
+
+The notebook demonstrates connecting to MySQL, loading the cleaned CSV without overwriting an existing table, and extracting parameterized SQL results into Pandas DataFrames. See the [MySQL setup instructions](#task-2-mysql-setup) below.
 
 ### Task 2: MySQL setup
 
@@ -154,7 +160,7 @@ Retention effort is likely best aimed at **new, month-to-month customers**, espe
 
 1. Complete the environment setup above.
 2. Download the dataset from [Kaggle](https://www.kaggle.com/datasets/yeanzc/telco-customer-churn-ibm-dataset) and place `Telco-Customer-Churn.csv` in `data/raw/`.
-3. Open `notebooks/01_data_sourcing_and_cleaning.ipynb` with the **Python (analytics)** kernel and run all cells from the `notebooks/` folder.
+3. Open `scripts/01_data_sourcing_and_cleaning.ipynb` with the **Python (analytics)** kernel and run all cells.
 4. Outputs are written to `data/processed/`, `reports/cleaning_log.csv` and `reports/figures/`.
 
 ## 🗄️ Load the cleaned CSV into local MySQL
@@ -200,4 +206,4 @@ The MySQL workflow is in [`notebooks/02_mysql_database.ipynb`](notebooks/02_mysq
 🔗 [LinkedIn](https://www.linkedin.com/in/rahul-kuiry-419049261/) | 🔗  [GitHub](https://github.com/rahulkuiry-04/)
 
 ---
-*Completed as part of the Apexplanet Data Analytics Internship, Task 1.*
+*Completed as part of the Apexplanet Data Analytics Internship, Tasks 1 and 2.*
