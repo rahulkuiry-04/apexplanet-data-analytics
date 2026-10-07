@@ -14,6 +14,8 @@ This project is Task 1 of the Apexplanet Data Analytics program. It covers setti
 **Objective:** Identify the key factors associated with customer churn.
 **Headline result:** 26.5% of customers churned, and contract type, tenure and internet service type were the strongest patterns.
 
+The SQL fundamentals and data-extraction practice for Task 2 is in [`notebooks/02_mysql_database.ipynb`](notebooks/02_mysql_database.ipynb). It covers joins, aggregates, CTEs, subqueries, window functions, retention and service-category analysis, plus views and query plans. The dataset is a single snapshot, so dated sales trends are not available.
+
 ## 📁 Folder Structure
 
 ```
@@ -22,8 +24,9 @@ apexplanet-data-analytics/
 │   ├── raw/                # Original, unmodified dataset (Telco-Customer-Churn.csv)
 │   └── processed/          # Cleaned data (telco_churn_clean.csv)
 ├── notebooks/
-│   └── 01_data_sourcing_and_cleaning.ipynb   # Sourcing, cleaning and full EDA
-├── scripts/                # Reusable Python scripts
+│   └── 02_mysql_database.ipynb              # Task 2: MySQL SQL practice
+├── scripts/
+│   └── 01_data_sourcing_and_cleaning.ipynb   # Task 1: sourcing, cleaning and EDA
 ├── reports/
 │   ├── cleaning_log.csv    # Log of every cleaning transformation
 │   └── figures/            # Saved EDA charts
@@ -46,7 +49,7 @@ conda create -n analytics python=3.10 -y
 conda activate analytics
 
 # 3. Install dependencies
-conda install -y pandas numpy matplotlib seaborn plotly scikit-learn sqlalchemy jupyter ipykernel
+conda install -y pandas numpy matplotlib seaborn plotly scikit-learn sqlalchemy pymysql jupyter ipykernel
 
 # Or recreate the exact environment:
 # conda env create -f environment.yml
@@ -55,7 +58,7 @@ conda install -y pandas numpy matplotlib seaborn plotly scikit-learn sqlalchemy 
 jupyter notebook
 ```
 
-**Libraries used:** pandas, numpy, matplotlib, seaborn, plotly, scikit-learn, sqlalchemy
+**Libraries used:** pandas, numpy, matplotlib, seaborn, plotly, scikit-learn, sqlalchemy, PyMySQL
 
 ## 📊 Data Sources
 
@@ -144,6 +147,36 @@ Retention effort is likely best aimed at **new, month-to-month customers**, espe
 2. Download the dataset from [Kaggle](https://www.kaggle.com/datasets/yeanzc/telco-customer-churn-ibm-dataset) and place `Telco-Customer-Churn.csv` in `data/raw/`.
 3. Open `notebooks/01_data_sourcing_and_cleaning.ipynb` with the **Python (analytics)** kernel and run all cells from the `notebooks/` folder.
 4. Outputs are written to `data/processed/`, `reports/cleaning_log.csv` and `reports/figures/`.
+
+## 🗄️ Load the cleaned CSV into local MySQL
+
+The MySQL workflow is in [`notebooks/02_mysql_database.ipynb`](notebooks/02_mysql_database.ipynb), with reusable connection, CSV-loading and query helpers in [`db_utils.py`](db_utils.py).
+
+1. Install the project requirements, including the MySQL DBAPI driver:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. Create the target database in MySQL if it does not already exist:
+
+   ```sql
+   CREATE DATABASE apexplanet;
+   ```
+
+3. Copy `.env.example` to `.env` in the project root and set your local MySQL values there. `db_utils.py` loads this file when creating the engine. `.env` is ignored by Git, so keep the real password there and out of notebooks/source control:
+
+   ```dotenv
+   DB_HOST=localhost
+   DB_PORT=3306
+   DB_USER=your_mysql_user
+   DB_PASSWORD=your_mysql_password
+   DB_NAME=apexplanet
+   ```
+
+   Process environment variables with the same names take precedence over values from `.env`. Then launch Jupyter.
+
+4. Open `notebooks/02_mysql_database.ipynb` and run its cells. It loads `data/processed/telco_churn_clean.csv` into `telco_churn`, checks the connection, then demonstrates a parameterized SQL query returned as a pandas DataFrame. The loader defaults to `if_exists="fail"` so it will not overwrite a table on rerun; choose `append` or `replace` explicitly only when appropriate.
 
 ## 🛠️ Next Steps
 

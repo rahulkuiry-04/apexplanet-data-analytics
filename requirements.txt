@@ -5,3 +5,5 @@ seaborn
 plotly
 scikit-learn
 sqlalchemy
+PyMySQL
+python-dotenv
