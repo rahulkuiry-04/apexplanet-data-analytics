@@ -5,5 +5,6 @@ seaborn
 plotly
 scikit-learn
 sqlalchemy
+psycopg[binary]
 PyMySQL
 python-dotenv

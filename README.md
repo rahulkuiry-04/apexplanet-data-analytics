@@ -14,7 +14,7 @@ This project is Task 1 of the Apexplanet Data Analytics program. It covers setti
 **Objective:** Identify the key factors associated with customer churn.
 **Headline result:** 26.5% of customers churned, and contract type, tenure and internet service type were the strongest patterns.
 
-The SQL fundamentals and data-extraction practice for Task 2 is in [`notebooks/02_mysql_database.ipynb`](notebooks/02_mysql_database.ipynb). It covers joins, aggregates, CTEs, subqueries, window functions, retention and service-category analysis, plus views and query plans. The dataset is a single snapshot, so dated sales trends are not available.
+Task 2's PostgreSQL SQL and Python integration is in [`notebooks/02_postgresql_database.ipynb`](notebooks/02_postgresql_database.ipynb), with 24 practice queries in [`sql/task2_queries.sql`](sql/task2_queries.sql) and reusable connection/loading helpers in [`scripts/postgres_db_utils.py`](scripts/postgres_db_utils.py). The earlier MySQL practice notebook is also retained. The Telco dataset is a single snapshot, so dated sales trends and product sales are not available.
 
 ## 📁 Folder Structure
 
@@ -24,9 +24,14 @@ apexplanet-data-analytics/
 │   ├── raw/                # Original, unmodified dataset (Telco-Customer-Churn.csv)
 │   └── processed/          # Cleaned data (telco_churn_clean.csv)
 ├── notebooks/
-│   └── 02_mysql_database.ipynb              # Task 2: MySQL SQL practice
+│   ├── 02_postgresql_database.ipynb         # Task 2: PostgreSQL + Python practice
+│   └── 02_mysql_database.ipynb              # MySQL practice
 ├── scripts/
-│   └── 01_data_sourcing_and_cleaning.ipynb   # Task 1: sourcing, cleaning and EDA
+│   ├── 01_data_sourcing_and_cleaning.ipynb  # Task 1: sourcing, cleaning and EDA
+│   └── postgres_db_utils.py                 # PostgreSQL connection and CSV helpers
+├── sql/
+│   └── task2_queries.sql                    # 24 SQL practice queries
+├── .env.example                             # PostgreSQL settings template
 ├── reports/
 │   ├── cleaning_log.csv    # Log of every cleaning transformation
 │   └── figures/            # Saved EDA charts
@@ -58,7 +63,13 @@ conda install -y pandas numpy matplotlib seaborn plotly scikit-learn sqlalchemy 
 jupyter notebook
 ```
 
-**Libraries used:** pandas, numpy, matplotlib, seaborn, plotly, scikit-learn, sqlalchemy, PyMySQL
+**Libraries used:** pandas, numpy, matplotlib, seaborn, plotly, scikit-learn, sqlalchemy, psycopg, PyMySQL
+
+### Task 2: PostgreSQL setup
+
+Create a PostgreSQL database named `apexplanet`, copy `.env.example` to `.env`, and set your local connection credentials. Install the PostgreSQL driver and remaining project dependencies with `pip install -r requirements.txt`, then run `notebooks/02_postgresql_database.ipynb`. The notebook loads `data/processed/telco_churn_clean.csv` into `telco_churn` (without replacing an existing table) and demonstrates SQL-to-Pandas extraction. Run the full query set in `sql/task2_queries.sql` with pgAdmin or `psql`.
+
+The dataset has no transaction dates or order-line/product data. Monthly sales trends and product-category sales require a different dataset; the SQL practice instead analyzes customer retention, lifetime billed charges, recurring-charge snapshots, and internet service categories.
 
 ## 📊 Data Sources
 
