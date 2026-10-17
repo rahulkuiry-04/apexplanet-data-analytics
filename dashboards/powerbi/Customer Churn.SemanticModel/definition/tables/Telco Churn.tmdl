@@ -1,0 +1,216 @@
+table 'Telco Churn'
+	lineageTag: ee71542c-0a5c-47da-b711-72d0911e6a91
+
+	column 'customer_id'
+		dataType: string
+		lineageTag: 50104cb1-ba43-4194-9a5a-79facf5bb48a
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'gender'
+		dataType: string
+		lineageTag: 091926cb-af33-46cb-aaf3-ac478a06c1b2
+		summarizeBy: none
+		sourceColumn: gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'senior_citizen'
+		dataType: string
+		lineageTag: d48f52b0-70ca-47a4-86cc-566e2a60ec4e
+		summarizeBy: none
+		sourceColumn: senior_citizen
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'partner'
+		dataType: string
+		lineageTag: d2ac9734-b5b8-4d2a-abe6-1fc05865c200
+		summarizeBy: none
+		sourceColumn: partner
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'dependents'
+		dataType: string
+		lineageTag: fbfbb841-b4fb-4220-8f2b-0355b22c97eb
+		summarizeBy: none
+		sourceColumn: dependents
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'tenure'
+		dataType: int64
+		lineageTag: e59cf3a4-1623-48e7-b280-82a40f3f9767
+		formatString: 0
+		summarizeBy: average
+		sourceColumn: tenure
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'phone_service'
+		dataType: string
+		lineageTag: 9cce4dfc-273b-45ee-abb9-e605a8eedb2b
+		summarizeBy: none
+		sourceColumn: phone_service
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'multiple_lines'
+		dataType: string
+		lineageTag: 3b9a4ac9-8d07-4db7-8a62-fc17a6e96e5e
+		summarizeBy: none
+		sourceColumn: multiple_lines
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'internet_service'
+		dataType: string
+		lineageTag: fdf109c6-f255-436c-a9a4-a7e2d5273981
+		summarizeBy: none
+		sourceColumn: internet_service
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'online_security'
+		dataType: string
+		lineageTag: ef796fc0-5561-4891-9147-204676b6d3a0
+		summarizeBy: none
+		sourceColumn: online_security
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'online_backup'
+		dataType: string
+		lineageTag: af821408-cf8d-4e0c-a103-4b53528e5714
+		summarizeBy: none
+		sourceColumn: online_backup
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'device_protection'
+		dataType: string
+		lineageTag: 03a9f3f0-fd5e-4acf-aeba-f52e7fc895f6
+		summarizeBy: none
+		sourceColumn: device_protection
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'tech_support'
+		dataType: string
+		lineageTag: 1f12dde6-e978-4744-864c-2a516a263b33
+		summarizeBy: none
+		sourceColumn: tech_support
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'streaming_tv'
+		dataType: string
+		lineageTag: fe7a08b8-4244-42f8-8400-250d286d57e4
+		summarizeBy: none
+		sourceColumn: streaming_tv
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'streaming_movies'
+		dataType: string
+		lineageTag: 50d253e5-5809-4f79-88b8-226dc4a714e2
+		summarizeBy: none
+		sourceColumn: streaming_movies
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'contract'
+		dataType: string
+		lineageTag: fc60ccc7-3ab4-4fe5-a40a-1e55000614a1
+		summarizeBy: none
+		sourceColumn: contract
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'paperless_billing'
+		dataType: string
+		lineageTag: d481a5dd-1692-4209-a4f2-f857b0603e0f
+		summarizeBy: none
+		sourceColumn: paperless_billing
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'payment_method'
+		dataType: string
+		lineageTag: 25062077-6f4b-4619-bb69-2e1329bba919
+		summarizeBy: none
+		sourceColumn: payment_method
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'monthly_charges'
+		dataType: double
+		lineageTag: 0c5b6327-3cd9-4c9d-a900-5eb15bc4fda8
+		formatString: $#,0.00
+		summarizeBy: sum
+		sourceColumn: monthly_charges
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'total_charges'
+		dataType: double
+		lineageTag: 55589c35-02c1-4fe4-8b8e-a3a73f3475af
+		formatString: $#,0.00
+		summarizeBy: sum
+		sourceColumn: total_charges
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'churn'
+		dataType: string
+		lineageTag: 84c177a8-5d85-41f0-8c59-8502527b1102
+		summarizeBy: none
+		sourceColumn: churn
+
+		annotation SummarizationSetBy = Automatic
+
+	measure 'Total Customers' = COUNTROWS('Telco Churn')
+		formatString: #,0
+		displayFolder: Key Metrics
+		lineageTag: a072a58e-b0b0-47a4-a8dc-ae74c6690737
+
+	measure 'Churned Customers' = CALCULATE([Total Customers], 'Telco Churn'[churn] = "Yes")
+		formatString: #,0
+		displayFolder: Key Metrics
+		lineageTag: dffdae00-b6c5-46b1-befc-d96c39a9f112
+
+	measure 'Churn Rate' = DIVIDE([Churned Customers], [Total Customers])
+		formatString: 0.0%
+		displayFolder: Key Metrics
+		lineageTag: c6407191-4a8e-48a1-b732-6c4b92f3b872
+
+	measure 'Average Tenure' = AVERAGE('Telco Churn'[tenure])
+		formatString: 0.0
+		displayFolder: Key Metrics
+		lineageTag: ce568449-f72a-4468-9f57-ec3d14d0f572
+
+	measure 'Average Monthly Charges' = AVERAGE('Telco Churn'[monthly_charges])
+		formatString: $#,0.00
+		displayFolder: Key Metrics
+		lineageTag: 720a70d9-6524-4f6e-afb3-f90651ae2636
+
+	measure 'Total Charges' = SUM('Telco Churn'[total_charges])
+		formatString: $#,0
+		displayFolder: Key Metrics
+		lineageTag: bf0d0b8e-4397-4e0d-934c-d87719cb672a
+
+	partition 'Telco Churn' = m
+		mode: import
+		source =
+					let
+					Source = Csv.Document(File.Contents("C:\\Rahul\\Apex_Planet\\data\\processed\\telco_churn_clean.csv"), [Delimiter=",", Columns=21, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {{"customer_id", type text}, {"gender", type text}, {"senior_citizen", type text}, {"partner", type text}, {"dependents", type text}, {"tenure", Int64.Type}, {"phone_service", type text}, {"multiple_lines", type text}, {"internet_service", type text}, {"online_security", type text}, {"online_backup", type text}, {"device_protection", type text}, {"tech_support", type text}, {"streaming_tv", type text}, {"streaming_movies", type text}, {"contract", type text}, {"paperless_billing", type text}, {"payment_method", type text}, {"monthly_charges", Currency.Type}, {"total_charges", Currency.Type}, {"churn", type text}})
+					in
+					    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+	annotation PBI_ResultType = Table

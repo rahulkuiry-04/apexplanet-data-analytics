@@ -1,15 +1,15 @@
-# Apexplanet Data Analytics: Tasks 1–2
+# Apexplanet Data Analytics: Tasks 1–3
 
-**Data Cleaning, Exploratory Data Analysis (EDA), and MySQL Data Extraction**
+**Data Cleaning, EDA, MySQL Data Extraction, and Interactive Dashboards**
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue)
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange)
 ![Database](https://img.shields.io/badge/Database-MySQL-blue)
-![Status](https://img.shields.io/badge/Status-Tasks%201%20%26%202%20Complete-brightgreen)
+![Status](https://img.shields.io/badge/Status-Tasks%201%E2%80%933%20Complete-brightgreen)
 
 ## 📌 Project Overview
 
-This project covers the first two tasks of the Apexplanet Data Analytics program: setting up a reproducible analytics environment, sourcing and cleaning a customer churn dataset, performing exploratory data analysis (EDA), and practicing SQL-based data extraction with MySQL and Python.
+This project covers Tasks 1–3 of the Apexplanet Data Analytics program: setting up a reproducible analytics environment, cleaning and exploring a customer churn dataset, practicing SQL-based extraction with MySQL and Python, and building interactive Power BI and Python dashboards.
 
 **Dataset analyzed:** IBM Telco Customer Churn (7,043 customers, 21 columns)
 **Objective:** Identify the key factors associated with customer churn.
@@ -36,7 +36,7 @@ apexplanet-data-analytics/
 ├── reports/
 │   ├── cleaning_log.csv         # Log of every cleaning transformation
 │   └── figures/                 # Saved EDA charts
-├── dashboards/                  # Power BI / Tableau files (PBIX/TWBX)
+├── dashboards/                  # Interactive dashboards and Tableau TWBX export
 └── README.md
 ```
 
@@ -193,11 +193,33 @@ The MySQL workflow is in [`notebooks/02_mysql_database.ipynb`](notebooks/02_mysq
 
 4. Open `notebooks/02_mysql_database.ipynb` and run its cells. It loads `data/processed/telco_churn_clean.csv` into `telco_churn`, checks the connection, then demonstrates a parameterized SQL query returned as a pandas DataFrame. The loader defaults to `if_exists="fail"` so it will not overwrite a table on rerun; choose `append` or `replace` explicitly only when appropriate.
 
+## 📈 Executive Dashboard
+
+The Python/Plotly dashboard in [`dashboards/customer_churn_dashboard.html`](dashboards/customer_churn_dashboard.html) contains **20 interactive visualizations** plus KPI cards. It covers churn and retention, contract and service segments, customer demographics, billing, add-on services, and tenure. Regenerate it after updating the cleaned dataset with:
+
+```bash
+python dashboards/customer_churn_dashboard.py
+```
+
+The native Power BI project is [`dashboards/powerbi/Customer Churn.pbip`](dashboards/powerbi/Customer%20Churn.pbip). It contains **19 report visuals across three pages**—Executive Overview, Customer Segments, and Billing and Retention—with customer, churn, contract, and billing measures plus contract and internet-service slicers. The project reads `data/processed/telco_churn_clean.csv`; rebuild it if the data or project root changes:
+
+```bash
+python dashboards/build_powerbi_project.py
+```
+
+Open the `.pbip` file in Power BI Desktop to inspect and edit the report. Use **Save As** in Power BI Desktop to create a `.pbix` copy. The packaged Tableau workbook is [`dashboards/customer_churn_dashboard.twbx`](dashboards/customer_churn_dashboard.twbx); it includes an embedded extract of the cleaned data. Regenerate it after changing the data with:
+
+```bash
+python dashboards/build_tableau_workbook.py
+```
+
+Open the `.twbx` file in Tableau Desktop or Tableau Public. It contains churn distribution, churn by contract and internet service, and tenure-versus-monthly-charges views.
+
 ## 🛠️ Next Steps
 
 - Explore additional relationships (add-on services, payment method and demographics vs churn).
 - Build a churn prediction model, handling the class imbalance and the `tenure` / `total_charges` overlap.
-- Create an interactive dashboard in `dashboards/` (Power BI or Tableau).
+- Extend the dashboard with filters, drill-down views, or a deployment-ready web app.
 
 ## 👤 Author
 
@@ -206,4 +228,4 @@ The MySQL workflow is in [`notebooks/02_mysql_database.ipynb`](notebooks/02_mysq
 🔗 [LinkedIn](https://www.linkedin.com/in/rahul-kuiry-419049261/) | 🔗  [GitHub](https://github.com/rahulkuiry-04/)
 
 ---
-*Completed as part of the Apexplanet Data Analytics Internship, Tasks 1 and 2.*
+*Completed as part of the Apexplanet Data Analytics Internship, Tasks 1–3.*

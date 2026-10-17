@@ -1,0 +1,214 @@
+{
+  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.61\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true}",
+  "layoutOptimization": 0,
+  "resourcePackages": [],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Executive Overview",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 900,
+      "name": "ReportSection3bc79f93cce547f885a4",
+      "ordinal": 0,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"4b8d217860834e5f83d4\",\"layouts\":[{\"id\":0,\"position\":{\"x\":20,\"y\":20,\"z\":1000,\"width\":250,\"height\":110,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Telco Churn.Total Customers\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Telco Churn\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Total Customers\"},\"Name\":\"Telco Churn.Total Customers\",\"NativeReferenceName\":\"Total Customers\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 110,
+          "width": 250,
+          "x": 20,
+          "y": 20,
+          "z": 1000
+        },
+        {
+          "config": "{\"name\":\"e706292337d746328d7c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":290,\"y\":20,\"z\":2000,\"width\":250,\"height\":110,\"tabOrder\":2}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Telco Churn.Churn Rate\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Telco Churn\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Churn Rate\"},\"Name\":\"Telco Churn.Churn Rate\",\"NativeReferenceName\":\"Churn Rate\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 110,
+          "width": 250,
+          "x": 290,
+          "y": 20,
+          "z": 2000
+        },
+        {
+          "config": "{\"name\":\"c7549c93750a4e038366\",\"layouts\":[{\"id\":0,\"position\":{\"x\":560,\"y\":20,\"z\":3000,\"width\":300,\"height\":110,\"tabOrder\":3}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Telco Churn.Average Monthly Charges\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Telco Churn\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Average Monthly Charges\"},\"Name\":\"Telco Churn.Average Monthly Charges\",\"NativeReferenceName\":\"Average Monthly Charges\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 110,
+          "width": 300,
+          "x": 560,
+          "y": 20,
+          "z": 3000
+        },
+        {
+          "config": "{\"name\":\"d3098734cdf54a40bffb\",\"layouts\":[{\"id\":0,\"position\":{\"x\":880,\"y\":20,\"z\":4000,\"width\":250,\"height\":110,\"tabOrder\":4}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Telco Churn.Average Tenure\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Telco Churn\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Average Tenure\"},\"Name\":\"Telco Churn.Average Tenure\",\"NativeReferenceName\":\"Average Tenure\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 110,
+          "width": 250,
+          "x": 880,
+          "y": 20,
+          "z": 4000
+        },
+        {
+          "config": "{\"name\":\"9f0077737d89445c9913\",\"layouts\":[{\"id\":0,\"position\":{\"x\":20,\"y\":155,\"z\":5000,\"width\":530,\"height\":300,\"tabOrder\":5}}],\"singleVisual\":{\"visualType\":\"pieChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Telco Churn.churn\",\"active\":true}],\"Legend\":[{\"queryRef\":\"Telco Churn.churn\",\"active\":true}],\"Values\":[{\"queryRef\":\"Telco Churn.Total Customers\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Telco Churn\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"churn\"},\"Name\":\"Telco Churn.churn\",\"NativeReferenceName\":\"Churn\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Total Customers\"},\"Name\":\"Telco Churn.Total Customers\",\"NativeReferenceName\":\"Total Customers\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 300,
+          "width": 530,
+          "x": 20,
+          "y": 155,
+          "z": 5000
+        },
+        {
+          "config": "{\"name\":\"96f980bff6c44a79b7e3\",\"layouts\":[{\"id\":0,\"position\":{\"x\":570,\"y\":155,\"z\":6000,\"width\":580,\"height\":300,\"tabOrder\":6}}],\"singleVisual\":{\"visualType\":\"clusteredBarChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Telco Churn.contract\",\"active\":true}],\"Y\":[{\"queryRef\":\"Telco Churn.Churn Rate\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Telco Churn\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"contract\"},\"Name\":\"Telco Churn.contract\",\"NativeReferenceName\":\"Contract\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Churn Rate\"},\"Name\":\"Telco Churn.Churn Rate\",\"NativeReferenceName\":\"Churn Rate\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 300,
+          "width": 580,
+          "x": 570,
+          "y": 155,
+          "z": 6000
+        },
+        {
+          "config": "{\"name\":\"5aa4f78aac084b0da0cc\",\"layouts\":[{\"id\":0,\"position\":{\"x\":20,\"y\":475,\"z\":7000,\"width\":530,\"height\":280,\"tabOrder\":7}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Telco Churn.internet_service\",\"active\":true}],\"Y\":[{\"queryRef\":\"Telco Churn.Churn Rate\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Telco Churn\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"internet_service\"},\"Name\":\"Telco Churn.internet_service\",\"NativeReferenceName\":\"Internet Service\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Churn Rate\"},\"Name\":\"Telco Churn.Churn Rate\",\"NativeReferenceName\":\"Churn Rate\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 280,
+          "width": 530,
+          "x": 20,
+          "y": 475,
+          "z": 7000
+        },
+        {
+          "config": "{\"name\":\"3614568bc8bd4f33a83b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":570,\"y\":475,\"z\":8000,\"width\":580,\"height\":280,\"tabOrder\":8}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Telco Churn.tenure\",\"active\":true}],\"Y\":[{\"queryRef\":\"Telco Churn.Churn Rate\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Telco Churn\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"tenure\"},\"Name\":\"Telco Churn.tenure\",\"NativeReferenceName\":\"Tenure\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Churn Rate\"},\"Name\":\"Telco Churn.Churn Rate\",\"NativeReferenceName\":\"Churn Rate\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 280,
+          "width": 580,
+          "x": 570,
+          "y": 475,
+          "z": 8000
+        }
+      ],
+      "width": 1280
+    },
+    {
+      "config": "{}",
+      "displayName": "Customer Segments",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 900,
+      "name": "ReportSectione904acc14935471fb041",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"57a440ff8cf743119f8f\",\"layouts\":[{\"id\":0,\"position\":{\"x\":20,\"y\":20,\"z\":1000,\"width\":240,\"height\":160,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Telco Churn.contract\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Telco Churn\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"contract\"},\"Name\":\"Telco Churn.contract\",\"NativeReferenceName\":\"Contract\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 160,
+          "width": 240,
+          "x": 20,
+          "y": 20,
+          "z": 1000
+        },
+        {
+          "config": "{\"name\":\"04b6d5e3668f4ed9936b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":280,\"y\":20,\"z\":2000,\"width\":260,\"height\":160,\"tabOrder\":2}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Telco Churn.internet_service\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Telco Churn\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"internet_service\"},\"Name\":\"Telco Churn.internet_service\",\"NativeReferenceName\":\"Internet Service\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 160,
+          "width": 260,
+          "x": 280,
+          "y": 20,
+          "z": 2000
+        },
+        {
+          "config": "{\"name\":\"560fb223efca4138a556\",\"layouts\":[{\"id\":0,\"position\":{\"x\":20,\"y\":200,\"z\":3000,\"width\":540,\"height\":300,\"tabOrder\":3}}],\"singleVisual\":{\"visualType\":\"clusteredBarChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Telco Churn.payment_method\",\"active\":true}],\"Y\":[{\"queryRef\":\"Telco Churn.Churn Rate\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Telco Churn\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"payment_method\"},\"Name\":\"Telco Churn.payment_method\",\"NativeReferenceName\":\"Payment Method\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Churn Rate\"},\"Name\":\"Telco Churn.Churn Rate\",\"NativeReferenceName\":\"Churn Rate\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 300,
+          "width": 540,
+          "x": 20,
+          "y": 200,
+          "z": 3000
+        },
+        {
+          "config": "{\"name\":\"bae64f827c5f4994b388\",\"layouts\":[{\"id\":0,\"position\":{\"x\":580,\"y\":20,\"z\":4000,\"width\":560,\"height\":300,\"tabOrder\":4}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Telco Churn.senior_citizen\",\"active\":true}],\"Y\":[{\"queryRef\":\"Telco Churn.Churn Rate\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Telco Churn\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"senior_citizen\"},\"Name\":\"Telco Churn.senior_citizen\",\"NativeReferenceName\":\"Senior Citizen\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Churn Rate\"},\"Name\":\"Telco Churn.Churn Rate\",\"NativeReferenceName\":\"Churn Rate\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 300,
+          "width": 560,
+          "x": 580,
+          "y": 20,
+          "z": 4000
+        },
+        {
+          "config": "{\"name\":\"db2641de39de424f9383\",\"layouts\":[{\"id\":0,\"position\":{\"x\":580,\"y\":340,\"z\":5000,\"width\":560,\"height\":300,\"tabOrder\":5}}],\"singleVisual\":{\"visualType\":\"clusteredBarChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Telco Churn.partner\",\"active\":true}],\"Y\":[{\"queryRef\":\"Telco Churn.Churn Rate\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Telco Churn\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"partner\"},\"Name\":\"Telco Churn.partner\",\"NativeReferenceName\":\"Partner\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Churn Rate\"},\"Name\":\"Telco Churn.Churn Rate\",\"NativeReferenceName\":\"Churn Rate\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 300,
+          "width": 560,
+          "x": 580,
+          "y": 340,
+          "z": 5000
+        },
+        {
+          "config": "{\"name\":\"b37afc7a8cb94cffb0f5\",\"layouts\":[{\"id\":0,\"position\":{\"x\":20,\"y\":520,\"z\":6000,\"width\":540,\"height\":260,\"tabOrder\":6}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Telco Churn.dependents\",\"active\":true}],\"Y\":[{\"queryRef\":\"Telco Churn.Churn Rate\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Telco Churn\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"dependents\"},\"Name\":\"Telco Churn.dependents\",\"NativeReferenceName\":\"Dependents\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Churn Rate\"},\"Name\":\"Telco Churn.Churn Rate\",\"NativeReferenceName\":\"Churn Rate\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 260,
+          "width": 540,
+          "x": 20,
+          "y": 520,
+          "z": 6000
+        }
+      ],
+      "width": 1280
+    },
+    {
+      "config": "{}",
+      "displayName": "Billing and Retention",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 900,
+      "name": "ReportSectionc957410b32064f8a893a",
+      "ordinal": 2,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"cb32cc56005d475a901d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":20,\"y\":20,\"z\":1000,\"width\":540,\"height\":280,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Telco Churn.paperless_billing\",\"active\":true}],\"Y\":[{\"queryRef\":\"Telco Churn.Churn Rate\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Telco Churn\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"paperless_billing\"},\"Name\":\"Telco Churn.paperless_billing\",\"NativeReferenceName\":\"Paperless Billing\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Churn Rate\"},\"Name\":\"Telco Churn.Churn Rate\",\"NativeReferenceName\":\"Churn Rate\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 280,
+          "width": 540,
+          "x": 20,
+          "y": 20,
+          "z": 1000
+        },
+        {
+          "config": "{\"name\":\"72101b6e2a094d77bbaa\",\"layouts\":[{\"id\":0,\"position\":{\"x\":580,\"y\":20,\"z\":2000,\"width\":560,\"height\":280,\"tabOrder\":2}}],\"singleVisual\":{\"visualType\":\"clusteredBarChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Telco Churn.contract\",\"active\":true}],\"Y\":[{\"queryRef\":\"Telco Churn.Average Monthly Charges\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Telco Churn\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"contract\"},\"Name\":\"Telco Churn.contract\",\"NativeReferenceName\":\"Contract\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Average Monthly Charges\"},\"Name\":\"Telco Churn.Average Monthly Charges\",\"NativeReferenceName\":\"Average Monthly Charges\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 280,
+          "width": 560,
+          "x": 580,
+          "y": 20,
+          "z": 2000
+        },
+        {
+          "config": "{\"name\":\"ad58ce9fdc6e4f48a746\",\"layouts\":[{\"id\":0,\"position\":{\"x\":20,\"y\":320,\"z\":3000,\"width\":540,\"height\":280,\"tabOrder\":3}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Telco Churn.gender\",\"active\":true}],\"Y\":[{\"queryRef\":\"Telco Churn.Churn Rate\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Telco Churn\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"gender\"},\"Name\":\"Telco Churn.gender\",\"NativeReferenceName\":\"Gender\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Churn Rate\"},\"Name\":\"Telco Churn.Churn Rate\",\"NativeReferenceName\":\"Churn Rate\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 280,
+          "width": 540,
+          "x": 20,
+          "y": 320,
+          "z": 3000
+        },
+        {
+          "config": "{\"name\":\"0b0cda2d25db4e3a919a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":580,\"y\":320,\"z\":4000,\"width\":560,\"height\":280,\"tabOrder\":4}}],\"singleVisual\":{\"visualType\":\"clusteredBarChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Telco Churn.internet_service\",\"active\":true}],\"Y\":[{\"queryRef\":\"Telco Churn.Total Charges\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Telco Churn\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"internet_service\"},\"Name\":\"Telco Churn.internet_service\",\"NativeReferenceName\":\"Internet Service\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Total Charges\"},\"Name\":\"Telco Churn.Total Charges\",\"NativeReferenceName\":\"Total Charges\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 280,
+          "width": 560,
+          "x": 580,
+          "y": 320,
+          "z": 4000
+        },
+        {
+          "config": "{\"name\":\"cb9bca4b19574dcfad5f\",\"layouts\":[{\"id\":0,\"position\":{\"x\":20,\"y\":620,\"z\":5000,\"width\":1120,\"height\":180,\"tabOrder\":5}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Telco Churn.contract\",\"active\":true},{\"queryRef\":\"Telco Churn.internet_service\",\"active\":true},{\"queryRef\":\"Telco Churn.churn\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Telco Churn\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"contract\"},\"Name\":\"Telco Churn.contract\",\"NativeReferenceName\":\"Contract\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"internet_service\"},\"Name\":\"Telco Churn.internet_service\",\"NativeReferenceName\":\"Internet Service\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"churn\"},\"Name\":\"Telco Churn.churn\",\"NativeReferenceName\":\"Churn\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 180,
+          "width": 1120,
+          "x": 20,
+          "y": 620,
+          "z": 5000
+        }
+      ],
+      "width": 1280
+    }
+  ]
+}
