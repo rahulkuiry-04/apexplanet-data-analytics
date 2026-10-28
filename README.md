@@ -1,15 +1,15 @@
-# Apexplanet Data Analytics: Tasks 1–3
+# Apexplanet Data Analytics: Tasks 1–4
 
-**Data Cleaning, EDA, MySQL Data Extraction, and Interactive Dashboards**
+**Data Cleaning, Statistical Analysis, Forecasting, Customer Segmentation, Predictive Modeling, MySQL Data Extraction, and Interactive Dashboards**
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue)
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange)
 ![Database](https://img.shields.io/badge/Database-MySQL-blue)
-![Status](https://img.shields.io/badge/Status-Tasks%201%E2%80%933%20Complete-brightgreen)
+![Status](https://img.shields.io/badge/Status-Tasks%201%E2%80%934%20Implemented-brightgreen)
 
 ## 📌 Project Overview
 
-This project covers Tasks 1–3 of the Apexplanet Data Analytics program: setting up a reproducible analytics environment, cleaning and exploring a customer churn dataset, practicing SQL-based extraction with MySQL and Python, and building interactive Power BI and Python dashboards.
+This project covers Tasks 1–4 of the Apexplanet Data Analytics program: setting up a reproducible analytics environment, cleaning and exploring a customer churn dataset, practicing SQL-based extraction with MySQL and Python, building interactive dashboards, and applying statistical analysis, forecasting, customer segmentation, and predictive modeling.
 
 **Dataset analyzed:** IBM Telco Customer Churn (7,043 customers, 21 columns)
 **Objective:** Identify the key factors associated with customer churn.
@@ -22,10 +22,11 @@ Task 2 includes 20+ MySQL practice queries in [`sql/task2_queries.sql`](sql/task
 ```
 apexplanet-data-analytics/
 ├── data/
-│   ├── raw/                # Original, unmodified dataset (Telco-Customer-Churn.csv)
+│   ├── raw/                # Original Telco data and separate daily temperature forecast sample
 │   └── processed/          # Cleaned data (telco_churn_clean.csv)
 ├── notebooks/
-│   └── 02_mysql_database.ipynb  # Task 2: MySQL + Python practice
+│   ├── 02_mysql_database.ipynb  # Task 2: MySQL + Python practice
+│   └── 03_advanced_analytics.ipynb # Task 4: statistics, time series, clustering and prediction
 ├── scripts/
 │   └── 01_data_sourcing_and_cleaning.ipynb # Task 1: sourcing, cleaning and EDA
 ├── db_utils.py                  # MySQL connection, CSV loading and query helpers
@@ -163,6 +164,12 @@ Retention effort is likely best aimed at **new, month-to-month customers**, espe
 3. Open `scripts/01_data_sourcing_and_cleaning.ipynb` with the **Python (analytics)** kernel and run all cells.
 4. Outputs are written to `data/processed/`, `reports/cleaning_log.csv` and `reports/figures/`.
 
+## 📐 Task 4: Statistical Analysis and Modeling
+
+Run [`notebooks/03_advanced_analytics.ipynb`](notebooks/03_advanced_analytics.ipynb) from top to bottom after installing `requirements.txt`. It covers descriptive statistics, confidence intervals, Welch's t-test, chi-square, one-way ANOVA, correlation-versus-causation cautions, customer segmentation with K-Means and PCA, churn classification, and a monthly-charge regression example. Metrics are computed from reproducible train/test splits; no accuracy or causal-impact claims are assumed in advance.
+
+The Telco churn dataset is a single customer snapshot without dates, so it cannot support genuine time-series forecasting. To avoid treating customer tenure as calendar time or inventing observations, the notebook uses a separately sourced [daily minimum temperatures sample](https://raw.githubusercontent.com/jbrownlee/Datasets/master/daily-min-temperatures.csv) for daily, weekly, and monthly resampling, decomposition, stationarity checks, smoothing, ARIMA/SARIMA forecasts, and held-out evaluation. These time-series results describe the weather sample, not Telco customers. The notebook reads a local `data/raw/daily-min-temperatures.csv` if present; otherwise, it retrieves the cited CSV, so an internet connection is needed on first run.
+
 ## 🗄️ Load the cleaned CSV into local MySQL
 
 The MySQL workflow is in [`notebooks/02_mysql_database.ipynb`](notebooks/02_mysql_database.ipynb), with reusable connection, CSV-loading and query helpers in [`db_utils.py`](db_utils.py).
@@ -228,4 +235,4 @@ Open the `.twbx` file in Tableau Desktop or Tableau Public. It contains churn di
 🔗 [LinkedIn](https://www.linkedin.com/in/rahul-kuiry-419049261/) | 🔗  [GitHub](https://github.com/rahulkuiry-04/)
 
 ---
-*Completed as part of the Apexplanet Data Analytics Internship, Tasks 1–3.*
+*Completed as part of the Apexplanet Data Analytics Internship, Tasks 1–4.*
