@@ -1,0 +1,2 @@
+total_customers,churn_rate_pct,avg_monthly_charges,avg_tenure_months,generated_at_utc,churn_by_contract,churn_by_internet_service,churn_by_payment_method
+7043,26.54,64.76,32.37,2026-10-28T08:12:54Z,"{'Month-to-month': 42.71, 'One year': 11.27, 'Two year': 2.83}","{'Fiber optic': 41.89, 'DSL': 18.96, 'No': 7.4}","{'Electronic check': 45.29, 'Mailed check': 19.11, 'Bank transfer (automatic)': 16.71, 'Credit card (automatic)': 15.24}"

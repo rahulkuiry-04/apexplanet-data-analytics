@@ -222,11 +222,192 @@ python dashboards/build_tableau_workbook.py
 
 Open the `.twbx` file in Tableau Desktop or Tableau Public. It contains churn distribution, churn by contract and internet service, and tenure-versus-monthly-charges views.
 
+## 🤖 Day 41–42: Automated Analytics Pipeline
+
+The project now includes an automated analytics pipeline that performs the full end-to-end workflow:
+
+- Extracts data from a CSV source by default (with optional support for database or API sources)
+- Cleans and transforms the data
+- Runs churn analytics and KPI calculations
+- Exports the results to CSV and optional Excel files
+- Sends an email summary report when SMTP settings are configured
+- Can be scheduled using Windows Task Scheduler, GitHub Actions, or Apache Airflow
+
+### Run the pipeline locally
+
+```bash
+python scripts/automate_analytics_pipeline.py
+```
+
+Optional flags:
+
+```bash
+python scripts/automate_analytics_pipeline.py \
+  --source-type csv \
+  --source-path data/processed/telco_churn_clean.csv \
+  --output-dir reports/automation \
+  --report-name churn_analytics_report \
+  --send-email
+```
+
+### Database or API source options
+
+```bash
+python scripts/automate_analytics_pipeline.py \
+  --source-type database \
+  --db-url mysql+pymysql://user:password@localhost:3306/apexplanet \
+  --sql-query "SELECT * FROM telco_churn"
+```
+
+```bash
+python scripts/automate_analytics_pipeline.py \
+  --source-type api \
+  --api-url "https://example.com/api/churn-data"
+```
+
+### Scheduling options
+
+1. Windows Task Scheduler
+   - Create a basic task and point it to `python.exe`
+   - Add the script path as an argument, for example:
+     `C:\Rahul\Apex_Planet\scripts\automate_analytics_pipeline.py`
+   - Set a daily or weekly trigger based on business needs
+
+2. GitHub Actions
+   - Add a workflow that runs the script on a cron schedule
+   - Store SMTP and email credentials in GitHub Secrets
+
+3. Apache Airflow
+   - Build a DAG that executes the Python script daily or weekly
+   - Use Airflow variables or environment secrets for upstream data sources and email credentials
+
+### Output files
+
+The pipeline writes results to `reports/automation/` including:
+
+- `churn_analytics_report_summary.csv`
+- `churn_analytics_report_contract_churn.csv`
+- `churn_analytics_report_internet_churn.csv`
+- `churn_analytics_report_payment_churn.csv`
+- optional `churn_analytics_report_results.xlsx` when Excel dependencies are available
+
+## 📊 Day 43–45: Final Dashboard & GitHub Documentation
+
+This phase focuses on finalizing the analytics outputs and preparing the project for portfolio and GitHub presentation.
+
+### Final dashboard update
+
+The dashboard has been updated with the final churn insights and visual storytelling driven by the business findings:
+
+- retention vs churn distribution
+- churn by contract type
+- tenure vs monthly charges
+- churn by internet service and payment method
+- filterable and presentation-ready dashboard structure for stakeholder review
+
+The primary dashboard artifact is:
+
+- [dashboards/customer_churn_dashboard.html](dashboards/customer_churn_dashboard.html)
+- [dashboards/customer_churn_dashboard.py](dashboards/customer_churn_dashboard.py)
+
+To regenerate the dashboard locally:
+
+```bash
+python dashboards/customer_churn_dashboard.py
+```
+
+### Publish to a cloud platform
+
+#### Option 1: Power BI Service
+
+1. Open the cleaned dataset in Power BI Desktop.
+2. Import the processed file from `data/processed/telco_churn_clean.csv`.
+3. Recreate the key visuals: churn rate, contract trends, internet service churn, and payment method analysis.
+4. Publish the report to Power BI Service.
+5. Configure scheduled refresh and share the dashboard with stakeholders.
+
+#### Option 2: Tableau Public
+
+1. Connect Tableau Desktop to the cleaned dataset.
+2. Build the same visuals with filters and KPI cards.
+3. Publish the workbook to Tableau Public.
+4. Share the dashboard link in the GitHub project README or portfolio.
+
+### GitHub documentation standards
+
+This repository is organized for professional portfolio use and GitHub presentation:
+
+- clear project overview and business context
+- reproducible setup instructions
+- dataset and methodology summary
+- code and notebook structure
+- dashboard and report artifacts
+- business findings and recommended actions
+- automation and scheduling guidance
+
+### Repository documentation checklist
+
+- README describes the business problem and outcome
+- setup, dependencies, and environment are documented
+- outputs and artifacts are clearly linked
+- dashboard/demo links are included
+- meaningful insights are summarized for non-technical stakeholders
+- scheduling or automation workflows are covered
+
+## 🧾 Task 5: Final Reporting, Deployment & Presentation
+
+### ApexPlanet Data Analytics Project
+
+**Objective:** Analyze the Telco customer churn dataset to identify the strongest churn drivers, validate the key patterns with statistical evidence, and present a business-ready solution for retention strategy.
+
+**Dataset description:** The project uses an IBM Telco Customer Churn sample dataset with 7,043 customer records and 21 variables covering demographics, contract type, service usage, billing behavior, and churn status.
+
+**Key questions answered:**
+- What are the strongest patterns associated with churn?
+- Which customer segments are most at risk?
+- Which business levers are most likely to reduce churn?
+
+**Tech Stack:**
+- Python, Pandas, NumPy, Matplotlib, Seaborn, Plotly
+- SQL and MySQL workflows
+- Power BI / Tableau
+- scikit-learn, statsmodels
+
+**Project Structure:**
+- `/notebooks/` - EDA, SQL workflow, analytics and modeling
+- `/scripts/` - automation and preprocessing scripts
+- `/data/` - raw and processed datasets
+- `/dashboards/` - HTML, Power BI, and Tableau deliverables
+- `/reports/` - charts, logs, and summary exports
+
+**Key Findings:**
+1. Contract type is the strongest driver of churn: month-to-month customers churn at a much higher rate than one-year and two-year customers.
+2. Newer customers churn more often than long-tenure customers, making early retention a critical business lever.
+3. Fiber optic plans and electronic check payments are associated with materially higher churn risk.
+
+**Dashboard Link:**
+- [Power BI / Tableau Public link](#) — update with the deployed dashboard URL when published
+
+**How to Run:**
+1. Clone the project repository.
+2. Install dependencies with `pip install -r requirements.txt`.
+3. Run the notebooks in order to clean, query, and analyze the data.
+4. Regenerate the dashboard with `python dashboards/customer_churn_dashboard.py`.
+
+**Author:**
+- Rahul Kuiry
+- Apexplanet Software Pvt. Ltd. Internship
+
+---
+
+This task finalizes the project as a professional, stakeholder-ready analytics deliverable with a clear business narrative, reproducible methods, and actionable deployment guidance.
+
 ## 🛠️ Next Steps
 
 - Explore additional relationships (add-on services, payment method and demographics vs churn).
 - Build a churn prediction model, handling the class imbalance and the `tenure` / `total_charges` overlap.
 - Extend the dashboard with filters, drill-down views, or a deployment-ready web app.
+- Add a CI/CD workflow to run the pipeline automatically in production.
 
 ## 👤 Author
 
